@@ -7,7 +7,7 @@ class Clinica {
         this.enfermeros = enfermeros;
     }
     mostrarclinica(){
-        return "el dueño es: " +this.duenio+ "y su nombre es: " +this.nombre;
+        return `el dueño es: ${this.duenio}`
     }
 }
 
@@ -24,7 +24,8 @@ class Doctor extends Profesional {
         this.especialidad = especialidad;
     }
     mostrardoc() {
-        return "el doctor se llama" + this.nombre + "y su apellido es: " + this.apellido;
+        return ` informacion del doctor
+        ${this.nombre}, ${this.apellido}`
     }
     mostrarturno() {
 
@@ -52,13 +53,14 @@ class Paciente {
         document.write(edadtotal);
     }
     mostrarpaciente() {
-        return "el paciente se llama" + this.nombrepac + "y su apellido es: " + this.apellidopac;
-    }
+        return ` informacion del paciente
+        ${this.nombre}, ${this.apellido}`  
+      }
     datosPaciente(){
         return this.nombrepac+" - "+this.apellidopac+"||"+this.dni+" pulgadas ,"+this.turno+" "
     }
 }
-let pacientes = []
+let pacientescoleccion = []
 function ingresarPacientes(){
     let nombrepac = document.getElementById("nombre").value
     let apellidopac= document.getElementById("apellido").value
@@ -66,17 +68,37 @@ function ingresarPacientes(){
     let fechanac = document.getElementById("fechanac").value
     let turno = parseInt(document.getElementById("turno").value)
     let anioactual = parseInt(document.getElementById("anioactual").value)
-    let obrasocial = parseInt(document.getElementById("obrasocial").value)
-    let pacienteX = new Pacientes(nombrepac,apellidopac,dni,fechanac,turno,anioactual,obrasocial)
-    pacientes.push(pacienteX)
+    let obrasocial = (document.getElementById("obrasocial").value)
+    let paciente1 = new Paciente(nombrepac,apellidopac,dni,fechanac,turno,anioactual,obrasocial)
+    pacientescoleccion.push(paciente1)
     let div = document.getElementById("demo") //div donde se incrusta todo
     let p = document.createElement("p")
-    p.textContent = pacienteX.datosPaciente()
     div.appendChild(p)
 }
 
 function mostrarPacientes(){
-  console.log(pacienteX)
+  console.log(pacientescoleccion)
+  let subtotal = 0
+    let ul = document.getElementById("ul")
+    if(ul.value !== ""){
+        ul.innerHTML = ""
+        for (const item of pacientescoleccion) {
+            let li = document.createElement("li")
+            li.textContent = item.datosPaciente()
+            ul.appendChild(li)
+        }
+    }else{
+        for (const item of pacientescoleccion) {
+            let li = document.createElement("li")
+            li.textContent = item.datosPaciente()
+            ul.appendChild(li)
+        }
+    }
+    for (const item of pacientescoleccion) {
+        subtotal = subtotal + item.precio
+        document.getElementById("subtotal").innerHTML = subtotal
+        
+    }
 }
 
 
@@ -84,16 +106,8 @@ function mostrarPacientes(){
 
 let doctor1 = new Doctor("Micaela", "Aranguiz", 1921928131, "pediatra")
 console.log(doctor1)
+console.log(doctor1.mostrardoc())
 doctor1.mostrardoc()
-
-/*
-let paciente1 = new Paciente("xavi", "Ocare", 43338962, 2001, "21 p.m", "no se", 2022);
-console.log(paciente1)
-//muestro la edad del paciente sacando el año con las cuentas
-document.write("la edad del paciente es: ");
-paciente1.edad()
-*/
-
 
 let enfermero1 = new Enfermero ("mariano", "orozco", 2398923, "No se")
 console.log(enfermero1)
@@ -102,3 +116,7 @@ console.log(enfermero1)
 let clinica1 = new Clinica("Alberto Fernandez", "Moguillansky", "no se", (doctor1),(enfermero1))
 console.log(clinica1)
 clinica1.mostrarclinica()
+console.log(clinica1.mostrarclinica())
+
+
+
