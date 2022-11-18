@@ -55,7 +55,53 @@ class Paciente {
         return "el paciente se llama" + this.nombre + "y su apellido es: " + this.apellido;
     }
 }
+let pacientes = []
+function ingresarPacientes(){
+    let nombre = document.getElementById("nombre").value
+    let apellido= document.getElementById("apellido").value
+    let dni = document.getElementById("dni").value
+    let fechanac = document.getElementById("fechanac").value
+    let turno = parseInt(document.getElementById("turno").value)
+    let anioactual = parseInt(document.getElementById("anioactual").value)
+    let obrasocial = parseInt(document.getElementById("obrasocial").value)
+    let paciente = new Pacientes(nombre,apellido,dni,fechanac,turno,anioactual,obrasocial)
+    pacientes.push(paciente)
+    let div = document.getElementById("demo") //div donde se incrusta todo
+    let p = document.createElement("p")
+    p.textContent = paciente.mostrarpaciente()
+    div.appendChild(p)
+}
 
+function mostrarPacientes(){
+    let subtotal = 0
+    let ul = document.getElementById("ul")
+    if(ul.value !== ""){
+        ul.innerHTML = ""
+        for (const item of televisores) {
+            let li = document.createElement("li")
+            li.textContent = item.datosTelevisor()
+            ul.appendChild(li)
+        }
+    }else{
+        for (const item of televisores) {
+            let li = document.createElement("li")
+            li.textContent = item.datosTelevisor()
+            ul.appendChild(li)
+        }
+    }
+    for (const item of televisores) {
+        subtotal = subtotal + item.precio
+        document.getElementById("subtotal").innerHTML = subtotal
+        
+    }
+}
+
+
+
+
+
+
+/* METO DATOS DENTRO DE CADA CLASE */
 
 let doctor1 = new Doctor("Micaela", "Aranguiz", 1921928131, "pediatra")
 console.log(doctor1)
