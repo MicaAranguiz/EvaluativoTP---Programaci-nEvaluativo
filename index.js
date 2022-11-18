@@ -38,9 +38,9 @@ class Enfermero extends Profesional {
     }
 }
 class Paciente {
-    constructor(nombre, apellido, dni, fechanac, turno, obrasocial, anioactual) {
-        this.nombre = nombre;
-        this.apellido = apellido;
+    constructor(nombrepac, apellidopac, dni, fechanac, turno, obrasocial, anioactual) {
+        this.nombrepac = nombrepac;
+        this.apellidopac = apellidopac;
         this.dni = dni;
         this.fechanac = fechanac;
         this.turno = turno;
@@ -52,53 +52,32 @@ class Paciente {
         document.write(edadtotal);
     }
     mostrarpaciente() {
-        return "el paciente se llama" + this.nombre + "y su apellido es: " + this.apellido;
+        return "el paciente se llama" + this.nombrepac + "y su apellido es: " + this.apellidopac;
+    }
+    datosPaciente(){
+        return this.nombrepac+" - "+this.apellidopac+"||"+this.dni+" pulgadas ,"+this.turno+" "
     }
 }
 let pacientes = []
 function ingresarPacientes(){
-    let nombre = document.getElementById("nombre").value
-    let apellido= document.getElementById("apellido").value
+    let nombrepac = document.getElementById("nombre").value
+    let apellidopac= document.getElementById("apellido").value
     let dni = document.getElementById("dni").value
     let fechanac = document.getElementById("fechanac").value
     let turno = parseInt(document.getElementById("turno").value)
     let anioactual = parseInt(document.getElementById("anioactual").value)
     let obrasocial = parseInt(document.getElementById("obrasocial").value)
-    let paciente = new Pacientes(nombre,apellido,dni,fechanac,turno,anioactual,obrasocial)
-    pacientes.push(paciente)
+    let pacienteX = new Pacientes(nombrepac,apellidopac,dni,fechanac,turno,anioactual,obrasocial)
+    pacientes.push(pacienteX)
     let div = document.getElementById("demo") //div donde se incrusta todo
     let p = document.createElement("p")
-    p.textContent = paciente.mostrarpaciente()
+    p.textContent = pacienteX.datosPaciente()
     div.appendChild(p)
 }
 
 function mostrarPacientes(){
-    let subtotal = 0
-    let ul = document.getElementById("ul")
-    if(ul.value !== ""){
-        ul.innerHTML = ""
-        for (const item of televisores) {
-            let li = document.createElement("li")
-            li.textContent = item.datosTelevisor()
-            ul.appendChild(li)
-        }
-    }else{
-        for (const item of televisores) {
-            let li = document.createElement("li")
-            li.textContent = item.datosTelevisor()
-            ul.appendChild(li)
-        }
-    }
-    for (const item of televisores) {
-        subtotal = subtotal + item.precio
-        document.getElementById("subtotal").innerHTML = subtotal
-        
-    }
+  console.log(pacienteX)
 }
-
-
-
-
 
 
 /* METO DATOS DENTRO DE CADA CLASE */
@@ -107,15 +86,16 @@ let doctor1 = new Doctor("Micaela", "Aranguiz", 1921928131, "pediatra")
 console.log(doctor1)
 doctor1.mostrardoc()
 
-let paciente1 = new Paciente("xavier", "Ocare", 43338962, 2001, "21 p.m", "no se", 2022);
+/*
+let paciente1 = new Paciente("xavi", "Ocare", 43338962, 2001, "21 p.m", "no se", 2022);
 console.log(paciente1)
 //muestro la edad del paciente sacando el año con las cuentas
 document.write("la edad del paciente es: ");
 paciente1.edad()
+*/
 
 
-
-let enfermero1 = new Enfermero ("mariano", "orozco", 2398923, paciente1, "No se")
+let enfermero1 = new Enfermero ("mariano", "orozco", 2398923, "No se")
 console.log(enfermero1)
 
 

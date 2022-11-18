@@ -15,7 +15,7 @@
                 <input type="text" name="nombre" id="nombre" class="form-control m-3" placeholder="nombre del paciente">
                 <input type="text" name="apellido" id="apellido" class="form-control m-3" placeholder="apellido del paciente">
                 <input type="text" name="dni" id="dni" class="form-control m-3" placeholder="dni del paciente">
-                <button class="btn btn-success" onclick="ingresarPaciente()"><i class="bi bi-wallet-fill"></i></button>
+                <button class="btn btn-success" onclick="ingresarPacientes()"><i class="bi bi-wallet-fill"></i></button>
             </div>
             eeeeeee
             <div class="col-7">
@@ -23,6 +23,7 @@
             </div>
             <button onclick="mostrarPacientes()" class="btn btn-primary btn-block m-3" >Mostrar Pacientes</button>
             <ul id="ul"></ul>
+            <p>Subtotal: $<span id="subtotal">0</span></p>
       </div>
     </div>
     <script src="index.js"> </script>
